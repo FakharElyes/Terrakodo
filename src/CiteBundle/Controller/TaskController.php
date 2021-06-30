@@ -4,6 +4,8 @@ namespace CiteBundle\Controller;
 
 use CiteBundle\Entity\Task;
 use CiteBundle\Form\TaskType;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -66,30 +68,31 @@ class TaskController extends Controller
 
 //------------------------------------- Export XL -----------------------------------------------------
 
-    public function index()
+    public function exportAction()
     {
         $spreadsheet = new Spreadsheet();
 
-        /* @var $sheet \PhpOffice\PhpSpreadsheet\Writer\Xlsx\Worksheet */
         $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setCellValue('A1', 'Hello World !');
-        $sheet->setTitle("My First Worksheet");
 
-        // Create your Office 2007 Excel (XLSX Format)
+        $sheet->setTitle('Tasks');
+
+        $sheet->getCell('A1')->setValue('Title');
+        $sheet->getCell('B1')->setValue('Description');
+        $sheet->getCell('C1')->setValue('Priority');
+        $sheet->getCell('C1')->setValue('Date');
+        $sheet->getCell('C1')->setValue('File');
+
+
+
+
+
+
         $writer = new Xlsx($spreadsheet);
 
-        // Create a Temporary file in the system
-        $fileName = 'my_first_excel_symfony4.xlsx';
-        $temp_file = tempnam(sys_get_temp_dir(), $fileName);
+        $writer->save('Terrakodo.xlsx');
 
-        // Create the excel file in the tmp directory of the system
-        $writer->save($temp_file);
-
-        // Return the excel file as an attachment
-        return $this->file($temp_file, $fileName, ResponseHeaderBag::DISPOSITION_INLINE);
+        return $this->redirectToRoute('CategorieRead');
     }
-
-
 
 
 

@@ -30,6 +30,10 @@ CategorieUpdate:
     path:     /HomeA/Task/update/{id}
     defaults: { _controller: CiteBundle:Task:UpdateTask }
 
+export:
+    path:   /HomeA/Task/export
+    defaults: { _controller: CiteBundle:Task:export }
+
 
 
 ################################################################ Profiles ####################################################
