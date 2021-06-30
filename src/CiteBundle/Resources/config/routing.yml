@@ -1,0 +1,43 @@
+cite_homepage:
+    path:     /
+    defaults: { _controller: CiteBundle:Default:indexU }
+
+cite_homepageAdmin:
+    path:     /HomeA
+    defaults: { _controller: CiteBundle:Default:index }
+
+cite_homepageMember:
+    path:     /HomeM
+    defaults: { _controller: CiteBundle:Default:indexM }
+
+
+
+
+################################################################ Task ############################################################
+CategorieRead:
+    path:     /HomeA/Task
+    defaults: { _controller: CiteBundle:Task:ReadTask }
+
+CategorieCreate:
+    path:     /HomeA/Task/create
+    defaults: { _controller: CiteBundle:Task:CreateTask }
+
+CategorieDelete:
+    path:     /HomeA/Task/delete/{id}
+    defaults: { _controller: CiteBundle:Task:DeleteTask }
+
+CategorieUpdate:
+    path:     /HomeA/Task/update/{id}
+    defaults: { _controller: CiteBundle:Task:UpdateTask }
+
+
+
+################################################################ Profiles ####################################################
+ProfilesA:
+    path:     /HomeA/ProfileA
+    defaults: { _controller: CiteBundle:Default:ProfilesAdimin }
+
+
+
+
+

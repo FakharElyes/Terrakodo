@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+    {% block content %}
+        <h1>Tasks</h1>
+        <table border="1">
+            <tr>
+                <td>Title</td>
+                <td>Description</td>
+                <td>Priority</td>
+                <td>Date</td>
+                <td>File</td>
+            </tr>
+            {% for entity in events   %}
+                <tr>
+                    <td>{{ entity.Title }}</td>
+                    <td>{{ entity.descrption }}</td>
+                    <td>{{ entity.priority }}</td>
+                    <td>{{ entity.date | date }}</td>
+                    <td><img width="100px" height="100px" src="{{ asset('uploads/images/'~ entity.image) }}" alt="File not found"></td>
+                    <td> <a href="{{ path('CategorieDelete',{'id':entity.id}) }}"><button>Delete</button></a> </td>
+                    <td> <a href="{{ path('CategorieUpdate',{'id':entity.id}) }}"><button>Update</button></a> </td>
+                </tr>
+            {% endfor %}
+        </table></br></br></br>
+        <td> <a href="{{ path('CategorieCreate') }}"><button>Add</button></a> </td>
+    {% endblock %}
+
+
